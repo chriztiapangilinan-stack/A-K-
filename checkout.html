@@ -1,22 +1,23 @@
-<!DOCTYPE html>
+const response = await fetch(
+    "http://localhost:5000/api/orders",
+    ...
+)
+```[cite: 4]
 
+That is why trying to place an order on your live Netlify site failed with the connection error. 
+
+Here is your **fixed `checkout.html` file** with the Render URL configured (`[https://ak-backend-gfhc.onrender.com/api/orders](https://ak-backend-gfhc.onrender.com/api/orders)`), along with a global `API_URL` variable at the top of the script:
+
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>Amour & Fleur | Checkout</title>
-
-<link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    rel="stylesheet"
->
-
-<link rel="stylesheet" href="style.css">
-
+    <title>Amour & Fleur | Checkout</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
@@ -26,21 +27,10 @@
 
     <nav>
         <ul>
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-
-            <li>
-                <a href="shop.html">Shop</a>
-            </li>
-
-            <li>
-                <a href="about.html">About Us</a>
-            </li>
-
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 </header>
@@ -59,7 +49,6 @@
 
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
-
                     <input
                         type="text"
                         id="fullname"
@@ -71,7 +60,6 @@
 
                 <div class="form-group">
                     <label for="email">Email Address</label>
-
                     <input
                         type="email"
                         id="email"
@@ -83,7 +71,6 @@
 
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-
                     <input
                         type="tel"
                         id="phone"
@@ -95,7 +82,6 @@
 
                 <div class="form-group">
                     <label for="address">Delivery Address</label>
-
                     <textarea
                         id="address"
                         name="address"
@@ -107,7 +93,6 @@
 
                 <div class="form-group">
                     <label for="delivery-date">Preferred Delivery Date</label>
-
                     <input
                         type="date"
                         id="delivery-date"
@@ -118,7 +103,6 @@
 
                 <div class="form-group">
                     <label for="payment">Payment Method</label>
-
                     <select
                         id="payment"
                         name="payment"
@@ -133,7 +117,6 @@
 
                 <div class="form-group">
                     <label for="message">Special Instructions</label>
-
                     <textarea
                         id="message"
                         name="message"
@@ -161,26 +144,17 @@
 
             <div class="summary-line">
                 <span>Subtotal</span>
-
-                <span>
-                    ₱<span id="subtotal">0.00</span>
-                </span>
+                <span>₱<span id="subtotal">0.00</span></span>
             </div>
 
             <div class="summary-line">
                 <span>Delivery Fee</span>
-
-                <span>
-                    ₱<span id="delivery-fee">100.00</span>
-                </span>
+                <span>₱<span id="delivery-fee">100.00</span></span>
             </div>
 
             <div class="summary-total">
                 <strong>Total</strong>
-
-                <strong>
-                    ₱<span id="grand-total">0.00</span>
-                </strong>
+                <strong>₱<span id="grand-total">0.00</span></strong>
             </div>
 
         </section>
@@ -190,6 +164,8 @@
 </main>
 
 <script>
+    // BACKEND API URL (Points to your live Render server)
+    const API_URL = "https://ak-backend-gfhc.onrender.com";
 
     const checkoutItems = document.getElementById("checkout-items");
     const subtotalElement = document.getElementById("subtotal");
@@ -205,23 +181,16 @@
     let subtotal = 0;
 
     if (cart.length === 0) {
-
         checkoutItems.innerHTML = `
             <div class="empty-checkout">
                 <i class="fa-solid fa-basket-shopping"></i>
-
                 <p>Your cart is empty.</p>
-
                 <a href="shop.html">Return to Shop</a>
             </div>
         `;
-
         placeOrderButton.disabled = true;
-
     } else {
-
         cart.forEach((item) => {
-
             const itemPrice =
                 parseFloat(
                     String(item.price).replace(/[₱,]/g, "")
@@ -230,26 +199,16 @@
             subtotal += itemPrice;
 
             const itemDiv = document.createElement("div");
-
             itemDiv.classList.add("checkout-item");
 
             itemDiv.innerHTML = `
-                <img
-                    src="${item.image}"
-                    alt="${item.name}"
-                >
-
+                <img src="${item.image}" alt="${item.name}">
                 <div class="checkout-item-info">
-
                     <h4>${item.name}</h4>
-
-                    <p>
-                        ₱${itemPrice.toLocaleString("en-PH", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        })}
-                    </p>
-
+                    <p>₱${itemPrice.toLocaleString("en-PH", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })}</p>
                 </div>
             `;
 
@@ -257,62 +216,38 @@
         });
     }
 
-    const finalTotal =
-        cart.length > 0
-            ? subtotal + deliveryFee
-            : 0;
+    const finalTotal = cart.length > 0 ? subtotal + deliveryFee : 0;
 
-    subtotalElement.textContent =
-        subtotal.toLocaleString("en-PH", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
+    subtotalElement.textContent = subtotal.toLocaleString("en-PH", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 
-    deliveryFeeElement.textContent =
-        cart.length > 0
-            ? deliveryFee.toLocaleString("en-PH", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })
-            : "0.00";
+    deliveryFeeElement.textContent = cart.length > 0 ? deliveryFee.toLocaleString("en-PH", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }) : "0.00";
 
-    grandTotalElement.textContent =
-        finalTotal.toLocaleString("en-PH", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
+    grandTotalElement.textContent = finalTotal.toLocaleString("en-PH", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 
     checkoutForm.addEventListener("submit", async function (e) {
-
         e.preventDefault();
 
         if (cart.length === 0) {
-
             alert("Your cart is empty.");
-
             return;
         }
 
-        const fullname =
-            document.getElementById("fullname").value.trim();
-
-        const email =
-            document.getElementById("email").value.trim();
-
-        const phone =
-            document.getElementById("phone").value.trim();
-
-        const address =
-            document.getElementById("address").value.trim();
-
-        const deliveryDate =
-            document.getElementById("delivery-date").value;
-
-        const payment =
-            document.getElementById("payment").value;
-
-        const message =
-            document.getElementById("message").value.trim();
+        const fullname = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const deliveryDate = document.getElementById("delivery-date").value;
+        const payment = document.getElementById("payment").value;
+        const message = document.getElementById("message").value.trim();
 
         const orderData = {
             fullname: fullname,
@@ -329,16 +264,13 @@
         placeOrderButton.textContent = "Placing Order...";
 
         try {
-
             const response = await fetch(
-                "http://localhost:5000/api/orders",
+                `${API_URL}/api/orders`,
                 {
                     method: "POST",
-
                     headers: {
                         "Content-Type": "application/json"
                     },
-
                     body: JSON.stringify(orderData)
                 }
             );
@@ -346,49 +278,30 @@
             const data = await response.json();
 
             if (data.success) {
-
                 alert(
                     "Order placed successfully!\n\n" +
-                    "Order Number: " +
-                    data.orderNumber +
-                    "\n" +
-                    "Total Amount: ₱" +
-                    finalTotal.toLocaleString("en-PH", {
+                    "Order Number: " + data.orderNumber + "\n" +
+                    "Total Amount: ₱" + finalTotal.toLocaleString("en-PH", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2
                     })
                 );
 
                 localStorage.removeItem("cart");
-
                 window.location.href = "index.html";
-
             } else {
-
-                alert(
-                    "Failed to place order: " +
-                    (data.error || "Unknown error.")
-                );
-
+                alert("Failed to place order: " + (data.error || "Unknown error."));
                 placeOrderButton.disabled = false;
                 placeOrderButton.textContent = "Place Order";
             }
 
         } catch (error) {
-
             console.error("Checkout error:", error);
-
-            alert(
-                "An error occurred while connecting to the server.\n\n" +
-                "Please make sure your backend server is running."
-            );
-
+            alert("An error occurred while connecting to the server.\n\nPlease check your internet connection.");
             placeOrderButton.disabled = false;
             placeOrderButton.textContent = "Place Order";
         }
-
     });
-
 </script>
 
 </body>

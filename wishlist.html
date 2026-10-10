@@ -78,10 +78,13 @@
     </main>
 
     <footer>
-        © 2026 A&K Crafts. All Rights Reserved.Designed to help you express love and appreciation through unique handmade flowers.
+        © 2026 A&K Crafts. All Rights Reserved. Designed to help you express love and appreciation through unique handmade flowers[cite: 9].
     </footer>
 
     <script>
+        // BACKEND API URL (Points to your live Render server)
+        const API_URL = "https://ak-backend-gfhc.onrender.com";
+
         let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
         function displayWishlist() {
@@ -148,9 +151,7 @@
             }
 
             wishlist.splice(index, 1);
-
             localStorage.setItem("wishlist", JSON.stringify(wishlist));
-
             displayWishlist();
         }
 
@@ -165,9 +166,7 @@
             };
 
             cart.push(cartItem);
-
             localStorage.setItem("cart", JSON.stringify(cart));
-
             alert(`${item.name} has been added to your cart!`);
         }
 
@@ -175,4 +174,3 @@
     </script>
 </body>
 </html>
-

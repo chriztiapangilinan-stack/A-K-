@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A&K Crafts | Flower Shop</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<link rel="stylesheet" href="style.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
@@ -35,11 +28,9 @@
         <a href="wishlist.html">
             <i class="fa-regular fa-heart"></i>
         </a>
-
         <a href="profile.html">
             <i class="fa-regular fa-user"></i>
         </a>
-
         <a href="cart.html">
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
@@ -47,15 +38,12 @@
 </header>
 
 <section class="contact-section">
-
     <div class="contact-container">
-
         <div class="contact-image">
             <img src="images/cont.png" alt="Flower Vase">
         </div>
 
         <div class="contact-info">
-
             <h2>Contact Us</h2>
 
             <p><strong>Location:</strong> Porac, Pampanga</p>
@@ -65,7 +53,6 @@
             <p><strong>Time:</strong> 08:00 AM to 05:00 PM</p>
 
             <form id="contact-form">
-
                 <input
                     type="text"
                     id="name"
@@ -73,7 +60,6 @@
                     placeholder="Customer Name:"
                     required
                 >
-
                 <input
                     type="email"
                     id="email"
@@ -81,7 +67,6 @@
                     placeholder="Email Address:"
                     required
                 >
-
                 <textarea
                     id="message"
                     name="message"
@@ -89,24 +74,22 @@
                     rows="4"
                     required
                 ></textarea>
-
                 <button type="submit">Submit</button>
-
             </form>
-
         </div>
-
     </div>
-
 </section>
 
 <footer class="contact-footer">
     <p>
-        © 2026 A&K Crafts. All Rights Reserved.Designed to help you express love and appreciation through unique handmade flowers.
+        © 2026 A&K Crafts. All Rights Reserved. Designed to help you express love and appreciation through unique handmade flowers.
     </p>
 </footer>
 
 <script>
+    // BACKEND API URL (Points to your live Render server)
+    const API_URL = "https://ak-backend-gfhc.onrender.com";
+
     const contactForm = document.querySelector("#contact-form");
 
     if (contactForm) {
@@ -119,7 +102,7 @@
                 message: document.getElementById("message").value
             };
 
-            fetch("http://localhost:5000/api/contact", {
+            fetch(`${API_URL}/api/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -137,12 +120,11 @@
             })
             .catch(error => {
                 console.error("Contact error:", error);
-                alert("Unable to send message. Please make sure the backend server is running.");
+                alert("Unable to send message. Please check your connection.");
             });
         });
     }
 </script>
 
 </body>
-
 </html>

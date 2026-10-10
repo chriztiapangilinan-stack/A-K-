@@ -53,6 +53,7 @@
         </div>
 
         <div class="product-grid" id="productGrid">
+            <!-- Fallback static cards if needed -->
             <div class="product-card">
                 <img src="images/sp1.png" alt="Red Rose">
                 <h3>Red Rose</h3>
@@ -60,90 +61,6 @@
                 <div class="product-buttons">
                     <button class="add-cart-btn" type="button">Add to cart</button>
                     <button class="wishlist-btn" type="button" aria-label="Add Red Rose to wishlist" title="Add to Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp2.png" alt="Pink Tulips">
-                <h3>Pink Tulips</h3>
-                <p>₱120</p>
-                <div class="product-buttons">
-                    <button class="add-cart-btn" type="button">Add to cart</button>
-                    <button class="wishlist-btn" type="button" aria-label="Add Pink Tulips to wishlist" title="Add to Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp3.png" alt="Butterfly Bouquet">
-                <h3>Butterfly Bouquet</h3>
-                <p>₱150</p>
-                <div class="product-buttons">
-                    <button class="add-cart-btn" type="button">Add to cart</button>
-                    <button class="wishlist-btn" type="button" aria-label="Add Butterfly Bouquet to wishlist" title="Add to Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp4.png" alt="Purple Satin Rose">
-                <h3>Purple Satin Rose</h3>
-                <p>₱185</p>
-                <div class="product-buttons">
-                    <button class="add-cart-btn" type="button">Add to cart</button>
-                    <button class="wishlist-btn" type="button" aria-label="Add Purple Satin Rose to wishlist" title="Add to Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp5.png" alt="Pink Satin Rose">
-                <h3>Pink Satin Rose</h3>
-                <p>₱185</p>
-                <div class="product-buttons">
-                    <button class="add-cart-btn" type="button">Add to cart</button>
-                    <button class="wishlist-btn" type="button" aria-label="Add Pink Satin Rose to wishlist" title="Add to Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp6.png" alt="Purple Tulips and Lily">
-                <h3>Purple Tulips &amp; Lily</h3>
-                <p>₱250</p>
-                <div class="product-buttons">
-                    <button class="add-cart-btn" type="button">Add to cart</button>
-                    <button class="wishlist-btn" type="button" aria-label="Add Purple Tulips and Lily to wishlist" title="Add to Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp7.png" alt="SunFlower">
-                <h3>SunFlower</h3>
-                <p>₱189</p>
-                <div class="product-buttons">
-                    <button class="add-cart-btn" type="button">Add to cart</button>
-                    <button class="wishlist-btn" type="button" aria-label="Add SunFlower to wishlist" title="Add to Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp8.png" alt="Red Tulips and Lily">
-                <h3>Red Tulips &amp; Lily</h3>
-                <p>₱250</p>
-                <div class="product-buttons">
-                    <button class="add-cart-btn" type="button">Add to cart</button>
-                    <button class="wishlist-btn" type="button" aria-label="Add Red Tulips and Lily to wishlist" title="Add to Wishlist">
                         <i class="fa-regular fa-heart"></i>
                     </button>
                 </div>
@@ -157,6 +74,9 @@
     </section>
 
     <script>
+        // BACKEND API URL (Points to your live Render server)
+        const API_URL = "https://ak-backend-gfhc.onrender.com";
+
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
@@ -174,7 +94,7 @@
 
         async function loadProducts() {
             try {
-                const response = await fetch("http://localhost:5000/api/products");
+                const response = await fetch(`${API_URL}/api/products`);
                 if (!response.ok) {
                     throw new Error("Failed to connect to the backend.");
                 }
@@ -218,7 +138,7 @@
                 productGrid.innerHTML = `
                     <p class="error-message">
                         Unable to connect to the backend.<br>
-                        Please make sure your Node.js server is running on port 5000.
+                        Please check your internet connection or server status.
                     </p>
                 `;
             }
