@@ -1,14 +1,3 @@
-const response = await fetch(
-    "http://localhost:5000/api/orders",
-    ...
-)
-```[cite: 4]
-
-That is why trying to place an order on your live Netlify site failed with the connection error. 
-
-Here is your **fixed `checkout.html` file** with the Render URL configured (`[https://ak-backend-gfhc.onrender.com/api/orders](https://ak-backend-gfhc.onrender.com/api/orders)`), along with a global `API_URL` variable at the top of the script:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
