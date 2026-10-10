@@ -331,7 +331,7 @@
                     }
                 });
             } catch (error) {
-                throw new Error("Cannot connect to the server. Make sure your backend is running on port 5000.");
+                throw new Error("Cannot connect to the server.");
             }
 
             const data = await response.json().catch(() => ({}));
@@ -385,7 +385,7 @@
             if (savedUser) {
                 displayProfile(savedUser);
                 try {
-                    const data = await apiRequest("/profile");
+                    const data = await apiRequest("/api/profile");
                     if (data.user) {
                         displayProfile(data.user);
                     }
@@ -397,7 +397,7 @@
             }
 
             try {
-                const data = await apiRequest("/profile");
+                const data = await apiRequest("/api/profile");
                 if (data.user) {
                     displayProfile(data.user);
                 } else {
@@ -434,7 +434,7 @@
             setBusy(button, true, originalLabel);
 
             try {
-                const data = await apiRequest("/login", {
+                const data = await apiRequest("/api/login", {
                     method: "POST",
                     body: JSON.stringify({
                         identifier: document.getElementById("login-identifier").value.trim(),
@@ -444,7 +444,7 @@
 
                 let user = data.user;
                 if (!user) {
-                    const profile = await apiRequest("/profile");
+                    const profile = await apiRequest("/api/profile");
                     user = profile.user;
                 }
 
@@ -484,7 +484,7 @@
             setBusy(button, true, originalLabel);
 
             try {
-                const data = await apiRequest("/register", {
+                const data = await apiRequest("/api/register", {
                     method: "POST",
                     body: JSON.stringify({
                         fullname: document.getElementById("register-fullname").value.trim(),
@@ -524,7 +524,7 @@
             button.disabled = true;
 
             try {
-                await apiRequest("/logout", { method: "POST" });
+                await apiRequest("/api/logout", { method: "POST" });
             } catch (error) {
                 console.warn("Backend logout warning:", error.message);
             } finally {
