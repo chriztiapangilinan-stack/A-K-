@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amour & Fleur | Flower Shop</title>
+    <title>A&K Crafts | Flower Shop</title>
     <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header / Navbar -->
     <header>
         <div class="shop">
-            <img src="images/logo (1).png" alt="Logo">
+            <a href="index.html">
+                <img src="images/logo (1).png" alt="A&K Crafts Logo">
+            </a>
         </div>
-
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -24,118 +24,328 @@
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
-
         <div class="iconn">
-            <i class="fa-regular fa-heart"></i>
-            <a href="contact.html"><i class="fa-regular fa-user"></i></a>
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="wishlist.html" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+            <a href="profile.html" aria-label="Profile"><i class="fa-regular fa-user"></i></a>
+            <a href="cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </header>
 
-    <!-- Shop Section -->
     <section class="shop-page">
         <div class="shop-header">
-            <div class="filtering">
+            <div class="filtering" id="filterButton">
                 <i class="fas fa-sliders-h"></i> Filtering
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search....">
+                <input type="text" id="searchInput" placeholder="Search....">
                 <i class="fas fa-search"></i>
             </div>
-            <div class="sort-option">
+            <div class="sort-option" id="sortButton">
                 <i class="fas fa-sort-amount-down"></i> Cheap
             </div>
         </div>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="images/sp1.png" alt="Periwinkle">
-                <h3>Periwinkle</h3>
-                <p>₱800</p>
-                <button>Add to cart</button>
-            </div>
+        <div class="filter-menu" id="filterMenu">
+            <button type="button" data-filter="all">All</button>
+            <button type="button" data-filter="under150">Below ₱150</button>
+            <button type="button" data-filter="150to200">₱150 - ₱200</button>
+            <button type="button" data-filter="over200">Above ₱200</button>
+        </div>
 
+        <div class="product-grid" id="productGrid">
             <div class="product-card">
-                <img src="images/sp2.png" alt="Daisy">
-                <h3>Daisy</h3>
-                <p>₱500</p>
-                <button>Add to cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp3.png" alt="Sunflower">
-                <h3>Sunflower</h3>
-                <p>₱750</p>
-                <button>Add to cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp4.png" alt="White Rose">
-                <h3>White Rose</h3>
-                <p>₱550</p>
-                <button>Add to cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp5.png" alt="Carnations">
-                <h3>Carnations</h3>
-                <p>₱1,500</p>
-                <button>Add to cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="images/sp6.png" alt="Red Rose">
+                <img src="images/sp1.png" alt="Red Rose">
                 <h3>Red Rose</h3>
-                <p>₱600</p>
-                <button>Add to cart</button>
+                <p>₱189</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add Red Rose to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="product-card">
-                <img src="images/sp7.png" alt="Tulip">
-                <h3>Tulip</h3>
-                <p>₱900</p>
-                <button>Add to cart</button>
+                <img src="images/sp2.png" alt="Pink Tulips">
+                <h3>Pink Tulips</h3>
+                <p>₱120</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add Pink Tulips to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="product-card">
-                <img src="images/sp8.png" alt="Lavender">
-                <h3>Lavender</h3>
-                <p>₱400</p>
-                <button>Add to cart</button>
+                <img src="images/sp3.png" alt="Butterfly Bouquet">
+                <h3>Butterfly Bouquet</h3>
+                <p>₱150</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add Butterfly Bouquet to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp4.png" alt="Purple Satin Rose">
+                <h3>Purple Satin Rose</h3>
+                <p>₱185</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add Purple Satin Rose to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp5.png" alt="Pink Satin Rose">
+                <h3>Pink Satin Rose</h3>
+                <p>₱185</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add Pink Satin Rose to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp6.png" alt="Purple Tulips and Lily">
+                <h3>Purple Tulips &amp; Lily</h3>
+                <p>₱250</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add Purple Tulips and Lily to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp7.png" alt="SunFlower">
+                <h3>SunFlower</h3>
+                <p>₱189</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add SunFlower to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp8.png" alt="Red Tulips and Lily">
+                <h3>Red Tulips &amp; Lily</h3>
+                <p>₱250</p>
+                <div class="product-buttons">
+                    <button class="add-cart-btn" type="button">Add to cart</button>
+                    <button class="wishlist-btn" type="button" aria-label="Add Red Tulips and Lily to wishlist" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
         <footer class="shop-footer">
-            © Copyright 2025 All rights reserved. 
-            Created by: Chriztia Nicole L. Pangilinan
+            © 2026 A&amp;K Crafts. All Rights Reserved.
+            Designed to help you express love and appreciation through unique handmade flowers.
         </footer>
     </section>
 
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+        const productGrid = document.getElementById("productGrid");
+        const searchInput = document.getElementById("searchInput");
+        const filterButton = document.getElementById("filterButton");
+        const filterMenu = document.getElementById("filterMenu");
+        const sortButton = document.getElementById("sortButton");
+
+        let cheapFirst = true;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadProducts();
+        });
+
+        async function loadProducts() {
+            try {
+                const response = await fetch("http://localhost:5000/api/products");
+                if (!response.ok) {
+                    throw new Error("Failed to connect to the backend.");
+                }
+
+                const data = await response.json();
+
+                if (data.success) {
+                    productGrid.innerHTML = "";
+
+                    if (!data.products || data.products.length === 0) {
+                        productGrid.innerHTML = `<p class="error-message">No products available.</p>`;
+                        return;
+                    }
+
+                    data.products.forEach((product) => {
+                        const productCard = document.createElement("div");
+                        productCard.className = "product-card";
+                        productCard.dataset.id = product.id;
+
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p class="price">₱${Number(product.price).toFixed(2)}</p>
+                            <div class="product-buttons">
+                                <button class="add-cart-btn" type="button">Add to cart</button>
+                                <button class="wishlist-btn" type="button" aria-label="Add ${product.name} to wishlist" title="Add to Wishlist">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        `;
+                        productGrid.appendChild(productCard);
+                    });
+
+                    addCartFunctionality();
+                    addWishlistFunctionality();
+                } else {
+                    productGrid.innerHTML = `<p class="error-message">Unable to load products.</p>`;
+                }
+            } catch (error) {
+                console.error("Error loading products:", error);
+                productGrid.innerHTML = `
+                    <p class="error-message">
+                        Unable to connect to the backend.<br>
+                        Please make sure your Node.js server is running on port 5000.
+                    </p>
+                `;
+            }
+        }
+
+        function addCartFunctionality() {
+            const buttons = document.querySelectorAll(".add-cart-btn");
+
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const product = button.closest(".product-card");
+                    const id = product.dataset.id;
+                    const name = product.querySelector("h3").textContent.trim();
+                    const priceText = product.querySelector(".price").textContent;
+                    const price = parseFloat(priceText.replace("₱", "").replace(",", ""));
+                    const image = product.querySelector("img").src;
+
+                    const item = { id, name, price, image };
+                    cart.push(item);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    alert(`${name} has been added to your cart!`);
+                });
+            });
+        }
+
+        function addWishlistFunctionality() {
+            const buttons = document.querySelectorAll(".wishlist-btn");
+
+            buttons.forEach((button) => {
+                const product = button.closest(".product-card");
+                const id = product.dataset.id;
+                const exists = wishlist.some((item) => item.id == id);
+
+                if (exists) {
+                    button.classList.add("active");
+                    button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+                }
+
+                button.addEventListener("click", () => {
+                    const name = product.querySelector("h3").textContent.trim();
+                    const priceText = product.querySelector(".price").textContent;
+                    const price = parseFloat(priceText.replace("₱", "").replace(",", ""));
+                    const image = product.querySelector("img").src;
+
+                    const existingIndex = wishlist.findIndex((item) => item.id == id);
+
+                    if (existingIndex === -1) {
+                        const item = { id, name, price, image };
+                        wishlist.push(item);
+                        button.classList.add("active");
+                        button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+                        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                        alert(`${name} has been added to your wishlist!`);
+                    } else {
+                        wishlist.splice(existingIndex, 1);
+                        button.classList.remove("active");
+                        button.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                        alert(`${name} has been removed from your wishlist!`);
+                    }
+                });
+            });
+        }
+
+        searchInput.addEventListener("input", function () {
+            const searchValue = this.value.toLowerCase().trim();
+            const products = document.querySelectorAll(".product-card");
+
+            products.forEach((product) => {
+                const productName = product.querySelector("h3").textContent.toLowerCase();
+                product.style.display = productName.includes(searchValue) ? "" : "none";
+            });
+        });
+
+        filterButton.addEventListener("click", () => {
+            filterMenu.style.display = filterMenu.style.display === "flex" ? "none" : "flex";
+        });
+
+        const filterOptions = document.querySelectorAll("#filterMenu button");
+
+        filterOptions.forEach((button) => {
+            button.addEventListener("click", function () {
+                const filter = this.getAttribute("data-filter");
+                const products = document.querySelectorAll(".product-card");
+
+                products.forEach((product) => {
+                    const priceText = product.querySelector(".price").textContent;
+                    const price = parseFloat(priceText.replace("₱", "").replace(",", ""));
+
+                    if (filter === "all") {
+                        product.style.display = "";
+                    } else if (filter === "under150") {
+                        product.style.display = price < 150 ? "" : "none";
+                    } else if (filter === "150to200") {
+                        product.style.display = (price >= 150 && price <= 200) ? "" : "none";
+                    } else if (filter === "over200") {
+                        product.style.display = price > 200 ? "" : "none";
+                    }
+                });
+
+                filterMenu.style.display = "none";
+            });
+        });
+
+        sortButton.addEventListener("click", () => {
+            const products = Array.from(document.querySelectorAll(".product-card"));
+
+            products.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector(".price").textContent.replace("₱", "").replace(",", ""));
+                const priceB = parseFloat(b.querySelector(".price").textContent.replace("₱", "").replace(",", ""));
+
+                return cheapFirst ? priceA - priceB : priceB - priceA;
+            });
+
+            products.forEach((product) => {
+                productGrid.appendChild(product);
+            });
+
+            cheapFirst = !cheapFirst;
+
+            if (cheapFirst) {
+                sortButton.innerHTML = '<i class="fas fa-sort-amount-down"></i> Cheap';
+            } else {
+                sortButton.innerHTML = '<i class="fas fa-sort-amount-up"></i> Expensive';
+            }
+        });
+    </script>
+
 </body>
-
-<script>
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const buttons = document.querySelectorAll(".product-card button");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const product = button.parentElement;
-      const name = product.querySelector("h3").textContent;
-      const price = product.querySelector("p").textContent;
-      const image = product.querySelector("img").src;
-
-      // Create product object
-      const item = { name, price, image };
-
-      // Add to cart array
-      cart.push(item);
-
-      // Save to localStorage
-      localStorage.setItem("cart", JSON.stringify(cart));
-
-      // Confirmation message
-      alert(`${name} has been added to your cart!`);
-    });
-  });
-</script>
 </html>

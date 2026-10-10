@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&K Crafts | Wishlist</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo (1).png" alt="A&K Crafts Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <div class="icons">
+            <a href="wishlist.html" class="active-icon" aria-label="Wishlist">
+                <i class="fa-solid fa-heart"></i>
+            </a>
+
+            <a href="profile.html" aria-label="Profile">
+                <i class="fa-regular fa-user"></i>
+            </a>
+
+            <a href="cart.html" aria-label="Shopping Cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="wishlist-page">
+        <section class="wishlist-header">
+            <h1>My Wishlist</h1>
+            <p>Save your favorite handmade flowers and crafts for later.</p>
+        </section>
+
+        <section class="wishlist-container" id="wishlistContainer">
+            <div class="empty-wishlist" id="emptyWishlist">
+                <div class="empty-icon">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <h2>Your Wishlist is Empty</h2>
+
+                <p>
+                    You haven't added any items to your wishlist yet.
+                    Explore our handmade flowers and find something you love.
+                </p>
+
+                <a href="shop.html" class="shop-button">
+                    <i class="fa-solid fa-store"></i>
+                    Continue Shopping
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 A&K Crafts. All Rights Reserved.Designed to help you express love and appreciation through unique handmade flowers.
+    </footer>
+
+    <script>
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+        function displayWishlist() {
+            const container = document.getElementById("wishlistContainer");
+            const emptyWishlist = document.getElementById("emptyWishlist");
+
+            container.querySelectorAll(".wishlist-item").forEach(item => {
+                item.remove();
+            });
+
+            if (wishlist.length === 0) {
+                emptyWishlist.style.display = "flex";
+                return;
+            }
+
+            emptyWishlist.style.display = "none";
+
+            wishlist.forEach((item, index) => {
+                const wishlistItem = document.createElement("div");
+
+                wishlistItem.className = "wishlist-item";
+
+                wishlistItem.innerHTML = `
+                    <div class="product-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+
+                    <div class="product-details">
+                        <h2>${item.name}</h2>
+
+                        <p class="product-description">
+                            A beautiful handmade flower arrangement created with care.
+                            Perfect for birthdays, anniversaries, graduations, or special occasions.
+                        </p>
+
+                        <p class="price">${item.price}</p>
+
+                        <span class="availability">
+                            <i class="fa-solid fa-circle"></i>
+                            Available
+                        </span>
+                    </div>
+
+                    <div class="wishlist-actions">
+                        <button class="add-cart" onclick="addToCart(${index})">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+
+                        <button class="remove-btn" onclick="removeItem(${index})">
+                            <i class="fa-solid fa-trash"></i>
+                            Remove
+                        </button>
+                    </div>
+                `;
+
+                container.insertBefore(wishlistItem, emptyWishlist);
+            });
+        }
+
+        function removeItem(index) {
+            if (!confirm("Remove this item from your wishlist?")) {
+                return;
+            }
+
+            wishlist.splice(index, 1);
+
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+            displayWishlist();
+        }
+
+        function addToCart(index) {
+            const item = wishlist[index];
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const cartItem = {
+                name: item.name,
+                price: item.price,
+                image: item.image
+            };
+
+            cart.push(cartItem);
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            alert(`${item.name} has been added to your cart!`);
+        }
+
+        document.addEventListener("DOMContentLoaded", displayWishlist);
+    </script>
+</body>
+</html>
+

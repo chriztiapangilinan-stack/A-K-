@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&K Crafts | My Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="images/logo (1).png" alt="A&K Crafts Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <a href="wishlist.html" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+            <a href="profile.html" aria-label="My Profile"><i class="fa-solid fa-user"></i></a>
+            <a href="cart.html" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </header>
+
+    <!-- PROFILE PAGE -->
+    <main class="profile-page">
+        <div class="profile-title">
+            <h1 id="page-title">Welcome to A&K Crafts</h1>
+            <p id="page-subtitle">Log in or create an account to manage your profile.</p>
+        </div>
+
+        <!-- LOGIN AND REGISTRATION -->
+        <section class="auth-container" id="auth-container">
+            <div class="auth-card">
+                <div class="auth-heading">
+                    <div class="auth-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h2 id="auth-heading-title">Welcome Back!</h2>
+                    <p id="auth-heading-description">Sign in to your A&K Crafts account.</p>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-identifier">Email or Username</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="login-identifier" placeholder="Enter email or username" autocomplete="username" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="login-password" placeholder="Enter your password" autocomplete="current-password" required>
+                            <button type="button" class="toggle-password" data-target="login-password" aria-label="Show password">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="auth-message" id="login-message" role="status" aria-live="polite"></div>
+
+                    <button type="submit" class="auth-submit" id="login-button">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </button>
+
+                    <p class="auth-switch">
+                        Don't have an account?
+                        <button type="button" class="text-button" id="show-register">Create a New Account</button>
+                    </p>
+                </form>
+
+                <!-- REGISTRATION FORM -->
+                <form id="register-form" hidden>
+                    <div class="form-group">
+                        <label for="register-fullname">Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="register-fullname" placeholder="Enter your full name" autocomplete="name" maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-username">Username</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-at"></i>
+                            <input type="text" id="register-username" placeholder="Choose a username" autocomplete="username" minlength="3" maxlength="30" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="register-email" placeholder="Enter your email" autocomplete="email" maxlength="254" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-phone">Phone Number</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="register-phone" placeholder="Enter your phone number" autocomplete="tel" maxlength="30" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-address">Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <input type="text" id="register-address" placeholder="Enter your address" autocomplete="street-address" maxlength="250" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="register-password" placeholder="Create a password (at least 8 characters)" autocomplete="new-password" minlength="8" maxlength="128" required>
+                            <button type="button" class="toggle-password" data-target="register-password" aria-label="Show password">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="register-confirm-password" placeholder="Confirm your password" autocomplete="new-password" minlength="8" maxlength="128" required>
+                            <button type="button" class="toggle-password" data-target="register-confirm-password" aria-label="Show password">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="auth-message" id="register-message" role="status" aria-live="polite"></div>
+
+                    <button type="submit" class="auth-submit" id="register-button">
+                        <i class="fa-solid fa-user-plus"></i> Create Account
+                    </button>
+
+                    <p class="auth-switch">
+                        Already have an account?
+                        <button type="button" class="text-button" id="show-login">Login Here</button>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <!-- LOGGED-IN PROFILE -->
+        <section class="logged-in-container" id="logged-in-container" hidden>
+            <div class="profile-container">
+                
+                <!-- PROFILE CARD -->
+                <section class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h2 id="profile-name">Customer</h2>
+                    <p class="username" id="profile-username"></p>
+                    <button type="button" class="edit-profile" id="logout-button">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                </section>
+
+                <!-- ACCOUNT INFORMATION -->
+                <section class="profile-details">
+                    <h3><i class="fa-regular fa-user"></i> Account Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span>Full Name</span>
+                            <strong id="profile-fullname">—</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Username</span>
+                            <strong id="profile-username-details">—</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Email Address</span>
+                            <strong id="profile-email">—</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Phone Number</span>
+                            <strong id="profile-phone">—</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Address</span>
+                            <strong id="profile-address">—</strong>
+                        </div>
+                        <div class="info-item">
+                            <span>Member Since</span>
+                            <strong id="profile-member-since">—</strong>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ACCOUNT LINKS -->
+            <section class="account-actions">
+                <a href="cart.html" class="action-card">
+                    <div class="action-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="action-text">
+                        <h4>My Cart</h4>
+                        <p>View your shopping cart</p>
+                    </div>
+                </a>
+
+                <a href="wishlist.html" class="action-card">
+                    <div class="action-icon"><i class="fa-solid fa-heart"></i></div>
+                    <div class="action-text">
+                        <h4>My Wishlist</h4>
+                        <p>View your favorite items</p>
+                    </div>
+                </a>
+
+                <a href="edit-profile.html" class="action-card">
+                    <div class="action-icon"><i class="fa-solid fa-user-pen"></i></div>
+                    <div class="action-text">
+                        <h4>Edit Profile</h4>
+                        <p>Update your account information</p>
+                    </div>
+                </a>
+            </section>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="profile-footer">
+        © 2026 A&K Crafts. All Rights Reserved.
+        Designed to help you express love and appreciation through unique handmade flowers.
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        "use strict";
+
+        const API_URL = "http://localhost:5000/api";
+        const STORAGE_KEY = "akcrafts_logged_in_user";
+
+        const authContainer = document.getElementById("auth-container");
+        const loggedInContainer = document.getElementById("logged-in-container");
+        const loginForm = document.getElementById("login-form");
+        const registerForm = document.getElementById("register-form");
+
+        function saveLoggedInUser(user) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+            } catch (error) {
+                console.error("Unable to save login information:", error);
+            }
+        }
+
+        function getSavedUser() {
+            try {
+                const savedUser = localStorage.getItem(STORAGE_KEY);
+                return savedUser ? JSON.parse(savedUser) : null;
+            } catch (error) {
+                console.error("Unable to read saved login:", error);
+                localStorage.removeItem(STORAGE_KEY);
+                return null;
+            }
+        }
+
+        function removeSavedUser() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        function showMessage(id, message, isError = true) {
+            const element = document.getElementById(id);
+            if (!element) return;
+
+            element.textContent = message;
+            element.classList.toggle("error", isError && Boolean(message));
+            element.classList.toggle("success", !isError && Boolean(message));
+        }
+
+        function clearMessages() {
+            showMessage("login-message", "");
+            showMessage("register-message", "");
+        }
+
+        function showLogin() {
+            clearMessages();
+            loginForm.hidden = false;
+            registerForm.hidden = true;
+
+            document.getElementById("page-title").textContent = "Welcome to A&K Crafts";
+            document.getElementById("page-subtitle").textContent = "Log in to access your account.";
+            document.getElementById("auth-heading-title").textContent = "Welcome Back!";
+            document.getElementById("auth-heading-description").textContent = "Sign in to your A&K Crafts account.";
+        }
+
+        function showRegister() {
+            clearMessages();
+            loginForm.hidden = true;
+            registerForm.hidden = false;
+
+            document.getElementById("page-title").textContent = "Join A&K Crafts";
+            document.getElementById("page-subtitle").textContent = "Create your account and start shopping.";
+            document.getElementById("auth-heading-title").textContent = "Create an Account";
+            document.getElementById("auth-heading-description").textContent = "Enter your details to register.";
+        }
+
+        function setBusy(button, busy, label) {
+            button.disabled = busy;
+            button.innerHTML = busy ? '<i class="fa-solid fa-spinner fa-spin"></i> Please wait...' : label;
+        }
+
+        async function apiRequest(endpoint, options = {}) {
+            let response;
+            try {
+                response = await fetch(`${API_URL}${endpoint}`, {
+                    ...options,
+                    credentials: "include",
+                    headers: {
+                        ...(options.body ? { "Content-Type": "application/json" } : {}),
+                        ...(options.headers || {})
+                    }
+                });
+            } catch (error) {
+                throw new Error("Cannot connect to the server. Make sure your backend is running on port 5000.");
+            }
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok || data.success === false) {
+                throw new Error(data.error || data.message || `Request failed (${response.status}).`);
+            }
+
+            return data;
+        }
+
+        function displayProfile(user) {
+            if (!user) {
+                displayLoggedOut();
+                return;
+            }
+
+            saveLoggedInUser(user);
+
+            document.getElementById("profile-name").textContent = user.fullname || user.fullName || "Customer";
+            document.getElementById("profile-username").textContent = user.username ? "@" + user.username : "";
+            document.getElementById("profile-fullname").textContent = user.fullname || user.fullName || "Not provided";
+            document.getElementById("profile-username-details").textContent = user.username ? "@" + user.username : "Not provided";
+            document.getElementById("profile-email").textContent = user.email || "Not provided";
+            document.getElementById("profile-phone").textContent = user.phone || "Not provided";
+            document.getElementById("profile-address").textContent = user.address || "Not provided";
+
+            let memberSince = user.memberSince || user.createdAt || user.created_at;
+            if (memberSince) {
+                const date = new Date(memberSince);
+                memberSince = Number.isNaN(date.getTime()) ? memberSince : date.toLocaleDateString();
+            }
+            document.getElementById("profile-member-since").textContent = memberSince || "Not available";
+
+            authContainer.hidden = true;
+            loggedInContainer.hidden = false;
+            document.getElementById("page-title").textContent = "My Profile";
+            document.getElementById("page-subtitle").textContent = "Manage your account and view your A&K Crafts activity.";
+        }
+
+        function displayLoggedOut() {
+            removeSavedUser();
+            loggedInContainer.hidden = true;
+            authContainer.hidden = false;
+            showLogin();
+        }
+
+        async function loadProfile() {
+            const savedUser = getSavedUser();
+
+            if (savedUser) {
+                displayProfile(savedUser);
+                try {
+                    const data = await apiRequest("/profile");
+                    if (data.user) {
+                        displayProfile(data.user);
+                    }
+                } catch (error) {
+                    console.warn("Could not verify session. Using saved profile.", error.message);
+                    displayProfile(savedUser);
+                }
+                return;
+            }
+
+            try {
+                const data = await apiRequest("/profile");
+                if (data.user) {
+                    displayProfile(data.user);
+                } else {
+                    displayLoggedOut();
+                }
+            } catch (error) {
+                displayLoggedOut();
+                showMessage("login-message", error.message);
+            }
+        }
+
+        document.getElementById("show-register").addEventListener("click", showRegister);
+        document.getElementById("show-login").addEventListener("click", showLogin);
+
+        document.querySelectorAll(".toggle-password").forEach(button => {
+            button.addEventListener("click", () => {
+                const input = document.getElementById(button.dataset.target);
+                const icon = button.querySelector("i");
+                const show = input.type === "password";
+
+                input.type = show ? "text" : "password";
+                icon.classList.toggle("fa-eye", !show);
+                icon.classList.toggle("fa-eye-slash", show);
+                button.setAttribute("aria-label", show ? "Hide password" : "Show password");
+            });
+        });
+
+        loginForm.addEventListener("submit", async event => {
+            event.preventDefault();
+            clearMessages();
+
+            const button = document.getElementById("login-button");
+            const originalLabel = '<i class="fa-solid fa-right-to-bracket"></i> Login';
+            setBusy(button, true, originalLabel);
+
+            try {
+                const data = await apiRequest("/login", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        identifier: document.getElementById("login-identifier").value.trim(),
+                        password: document.getElementById("login-password").value
+                    })
+                });
+
+                let user = data.user;
+                if (!user) {
+                    const profile = await apiRequest("/profile");
+                    user = profile.user;
+                }
+
+                if (!user) {
+                    throw new Error("Login succeeded, but the user profile could not be loaded.");
+                }
+
+                saveLoggedInUser(user);
+                displayProfile(user);
+                loginForm.reset();
+            } catch (error) {
+                showMessage("login-message", error.message);
+            } finally {
+                setBusy(button, false, originalLabel);
+            }
+        });
+
+        registerForm.addEventListener("submit", async event => {
+            event.preventDefault();
+            clearMessages();
+
+            const password = document.getElementById("register-password").value;
+            const confirmPassword = document.getElementById("register-confirm-password").value;
+
+            if (password.length < 8) {
+                showMessage("register-message", "Password must contain at least 8 characters.");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showMessage("register-message", "Passwords do not match.");
+                return;
+            }
+
+            const button = document.getElementById("register-button");
+            const originalLabel = '<i class="fa-solid fa-user-plus"></i> Create Account';
+            setBusy(button, true, originalLabel);
+
+            try {
+                const data = await apiRequest("/register", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        fullname: document.getElementById("register-fullname").value.trim(),
+                        username: document.getElementById("register-username").value.trim(),
+                        email: document.getElementById("register-email").value.trim(),
+                        phone: document.getElementById("register-phone").value.trim(),
+                        address: document.getElementById("register-address").value.trim(),
+                        password: password
+                    })
+                });
+
+                registerForm.reset();
+
+                if (data.user) {
+                    saveLoggedInUser(data.user);
+                    displayProfile(data.user);
+                    return;
+                }
+
+                if (data.loggedIn === true) {
+                    await loadProfile();
+                    return;
+                }
+
+                showLogin();
+                document.getElementById("login-identifier").value = data.email || "";
+                showMessage("login-message", data.message || "Account created successfully. Please log in.", false);
+            } catch (error) {
+                showMessage("register-message", error.message);
+            } finally {
+                setBusy(button, false, originalLabel);
+            }
+        });
+
+        document.getElementById("logout-button").addEventListener("click", async () => {
+            const button = document.getElementById("logout-button");
+            button.disabled = true;
+
+            try {
+                await apiRequest("/logout", { method: "POST" });
+            } catch (error) {
+                console.warn("Backend logout warning:", error.message);
+            } finally {
+                removeSavedUser();
+                loginForm.reset();
+                registerForm.reset();
+                displayLoggedOut();
+                button.disabled = false;
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", loadProfile);
+    </script>
+
+</body>
+</html>
